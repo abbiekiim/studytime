@@ -1,3 +1,8 @@
+here we are given time logs. 
+start time and end times are given in order
+if the study duration is less than 5 min then we dont count the time
+we have to return the duration in hh:mm format
+
 let log = ["08:30", "09:00", "14:00", "16:00", "16:01", "16:06", "16:07", "16:11"]
 
 var answer = '';
