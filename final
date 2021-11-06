@@ -1,0 +1,67 @@
+let log = ["08:30", "09:00", "14:00", "16:00", "16:01", "16:06", "16:07", "16:11"]
+
+var answer = '';
+let changedLog = [];
+let hourMin = [];
+let min = 0;
+let minTime = [];
+let durationLog = [];
+let validDurationLog = [];
+let minResult = 0;
+
+    for (let i = 0; i < log.length; i++){
+            let hourChange = log[i].substring(0,2)+log[i].substring(3);
+            changedLog.push(hourChange);
+        }
+    
+
+    for (let i = 0; i < changedLog.length; i++){
+            hourMin.push(changedLog[i].match(/.{2}/g));            
+        }
+    
+    for (let i = 0; i < hourMin.length; i++){
+        for (let j = 0; j < 1; j++){
+            min = parseInt(hourMin[i][j]*60) + parseInt(hourMin[i][j+1]);
+            minTime.push(min);
+        }           
+    }
+    
+    for(let i = 0; i < minTime.length; i+=2){
+        let duration = minTime[i+1] - minTime[i];
+        durationLog.push(duration);
+    }
+
+// now we have to go through the duration log [30, 120, 5, 4] to make sure the duration is over 5 min.
+// if it is more than 5 min we will push it to the minResult
+
+    for(let i = 0; i < durationLog.length; i++){
+        if(durationLog[i] > 5){
+        validDurationLog.push(durationLog[i]);
+        };
+    }
+
+// now we will add all the valid durations and have the validDurationMin
+    
+    for (let i = 0; i < validDurationLog.length; i++){
+        minResult += validDurationLog[i];
+    }
+
+// now we will turn the min result into hours and minutes
+
+    if (minResult/60 < 10){
+        answer += "0"
+    }
+
+    answer += Math.trunc(minResult/60);
+    answer += ":"
+    answer += minResult%60
+
+//
+
+console.log(changedLog);
+console.log(hourMin);
+console.log(minTime);
+console.log(durationLog);
+console.log(validDurationLog);
+console.log(minResult);
+console.log(answer);
