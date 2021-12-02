@@ -1,0 +1,46 @@
+
+//why cant i do else if here?????
+
+var interpret = function (command) {
+    let result = "";
+    for (let i = 0; i < command.length;){
+        if (command[i] == "G") {
+            result += "G";
+            i++;
+        if (command[i] == "(" & command[i+1] == ")") {
+                result += "o"
+                i += 2;
+        if (command[i] == "(" & command[i+1] == "a") {
+                    result += "al"
+                    i += 4;
+                }
+            }
+        }
+    }
+    
+    return result;
+    
+};
+
+
+
+var interpret = function(command) {
+    const translate = {
+        "G": "G",
+        "()": "o",
+        "(al)": "al"
+    }
+    
+    let result = "";
+    let chars = "";
+    
+    for (let i = 0; i < command.length; i++) {
+        chars += command[i];
+        if (translate[chars]){
+            result += translate[chars];
+            chars = "";
+        }
+    }
+    
+    return result;
+};
