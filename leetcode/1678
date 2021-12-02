@@ -1,5 +1,6 @@
 
 //why cant i do else if here?????
+//
 
 var interpret = function (command) {
     let result = "";
